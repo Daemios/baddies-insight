@@ -11,7 +11,6 @@ let instance = new Vue({
             form_storable_key: 'instance_id',
             list_type: 'table',
             list_table_columns: {
-                id: 'ID',
                 type: 'Type',
                 label: 'Raid',
                 tier: 'Tier'

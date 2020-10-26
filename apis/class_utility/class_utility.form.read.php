@@ -13,8 +13,10 @@ try {
         ->select([
             'class_utility_id',
             'class_id',
+            'specialization_id',
             'utility_id',
-            'cooldown'
+            'cooldown',
+            'name'
         ])
         ->from('wow_classes_utility')
         ->where('class_utility_id', '=', $_POST['id'])

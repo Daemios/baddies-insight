@@ -77,8 +77,10 @@ try {
     $class_utility = new ClassUtility([
         'class_utility_id' => $_POST['class_utility_id'],
         'class_id' => $_POST['class_id'],
+        'specialization_id' => $_POST['specialization_id'],
         'utility_id' => $_POST['utility_id'],
-        'cooldown' => $_POST['cooldown']
+        'cooldown' => $_POST['cooldown'],
+        'name' => $_POST['name']
     ]);
 
     try {

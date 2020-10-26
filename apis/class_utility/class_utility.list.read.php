@@ -13,20 +13,26 @@ try {
         ->select([
             'class_utility_id AS id',
             'class_id',
+            'specialization_id',
             'utility_id',
-            'cooldown'
+            'cooldown',
+            'name'
         ])
         ->from('wow_classes_utility');
 
     $crud = (new CrudRead($query))
         ->searchColumns([
             'class_id',
-            'utility_id'
+            'specialization_id',
+            'utility_id',
+            'name'
         ])
         ->sortMap([
             'class_id' => 'class_id',
+            'specialization_id'=> 'specialization_id',
             'utility_id' => 'utility_id',
-            'cooldown' => 'cooldown'
+            'cooldown' => 'cooldown',
+            'name' => 'name'
         ])
         ->execute();
 

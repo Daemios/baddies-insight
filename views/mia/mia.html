@@ -5,15 +5,23 @@
                     id="mia-character"
                     label="Character"
                     :options="characters"
+                    v-model="character_selected"
             ></aui-datalist>
             <aui-select
                     label="Duration"
                     :options="duration_options"
+                    v-model="duration_selected"
             ></aui-select>
         </div>
-        <mia-calendar></mia-calendar>
+        <mia-calendar
+                :duration_selected="duration_selected"
+                :date_selected="date_selected"
+                @click="setDate"
+        ></mia-calendar>
         <div class="control-bar">
-            <aui-button>Confirm MIA</aui-button>
+            <aui-button
+                :disabled="disableSubmit"
+            >Confirm MIA</aui-button>
         </div>
     </div>
 </div>

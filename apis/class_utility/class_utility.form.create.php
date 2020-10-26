@@ -10,6 +10,8 @@ use Exception;
 
 try {
 
+    error_log(json_encode($_POST));
+
     /**
      * Validate for length errors in the given data.
      */
@@ -45,8 +47,10 @@ try {
      */
     $utility_type = new ClassUtility([
         'class_id' => $_POST['class_id'],
+        'specialization_id' => $_POST['specialization_id'],
         'utility_id' => $_POST['utility_id'],
-        'cooldown' => $_POST['cooldown']
+        'cooldown' => $_POST['cooldown'],
+        'name' => $_POST['name']
     ]);
 
     $utility_type->create();

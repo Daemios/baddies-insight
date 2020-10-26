@@ -11,7 +11,6 @@ let instance = new Vue({
             form_storable_key: 'utility_id',
             list_type: 'table',
             list_table_columns: {
-                id: 'ID',
                 label: 'Label'
             },
             fields: [

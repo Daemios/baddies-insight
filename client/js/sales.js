@@ -11,7 +11,6 @@ let instance = new Vue({
             form_storable_key: 'sale_price_id',
             list_type: 'table',
             list_table_columns: {
-                id: 'ID',
                 type: 'Type',
                 title: 'Label',
                 subtext: 'Price'

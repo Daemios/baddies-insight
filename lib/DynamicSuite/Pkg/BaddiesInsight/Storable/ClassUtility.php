@@ -24,12 +24,22 @@ class ClassUtility extends Storable implements IStorable
     /**
      * @var int|null
      */
+    public ?int $specialization_id = null;
+
+    /**
+     * @var int|null
+     */
     public ?int $utility_id = null;
 
     /**
      * @var int|null
      */
     public ?int $cooldown = null;
+
+    /**
+     * @var string|null
+     */
+    public ?string $name = null;
 
     /**
      * @var int[]
@@ -55,8 +65,10 @@ class ClassUtility extends Storable implements IStorable
         $this->utility_id = (new Query())
             ->insert([
                 'class_id' => $this->class_id,
+                'specialization_id' => $this->specialization_id,
                 'utility_id' => $this->utility_id,
-                'cooldown' => $this->cooldown
+                'cooldown' => $this->cooldown,
+                'name' => $this->name
             ])
             ->into('wow_classes_utility')
             ->execute();
@@ -94,8 +106,10 @@ class ClassUtility extends Storable implements IStorable
         (new Query())
             ->set([
                 'class_id' => $this->class_id,
+                'specialization_id' => $this->specialization_id,
                 'utility_id' => $this->utility_id,
-                'cooldown' => $this->cooldown
+                'cooldown' => $this->cooldown,
+                'name' => $this->name
             ])
             ->update('wow_classes_utility')
             ->where('class_utility_id', '=', $this->class_utility_id)

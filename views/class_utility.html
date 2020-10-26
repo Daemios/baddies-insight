@@ -13,26 +13,47 @@
         <!-- Form page -->
         <template #form="{ form, error, overlay }">
 
-            <aui-input
-                    label="class_id"
-                    :failure="error.class_id"
-                    :disabled="overlay"
-                    v-model="form.class_id"
-            ></aui-input>
+            <div class="col-3">
+                <aui-select
+                        label="Class"
+                        :failure="error.class_id"
+                        :disabled="overlay"
+                        :options="classes"
+                        v-model="form.class_id"
+                        @change="getSpecializations(form.class_id)"
+                ></aui-select>
 
-            <aui-input
-                    label="utility_id"
-                    :failure="error.utility_id"
-                    :disabled="overlay"
-                    v-model="form.utility_id"
-            ></aui-input>
+                <aui-select
+                        label="Specialization"
+                        :failure="error.specialization_id"
+                        :disabled="overlay || specializations === []"
+                        :options="specializations"
+                        v-model="form.specialization_id"
+                ></aui-select>
 
-            <aui-input
-                    label="cooldown"
-                    :failure="error.cooldown"
+                <aui-select
+                        label="Utility"
+                        :failure="error.utility_id"
+                        :disabled="overlay"
+                        :options="utility_types"
+                        v-model="form.utility_id"
+                ></aui-select>
+            </div>
+
+            <div class="col-2">
+                <aui-input
+                        label="Cooldown (in seconds)"
+                        :failure="error.cooldown"
+                        :disabled="overlay"
+                        v-model="form.cooldown"
+                ></aui-input>
+                <aui-input
+                    label="Name"
+                    :failure="error.name"
                     :disabled="overlay"
-                    v-model="form.cooldown"
-            ></aui-input>
+                    v-model="form.name"
+                ></aui-input>
+            </div>
 
         </template>
 

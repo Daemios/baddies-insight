@@ -11,28 +11,54 @@ let instance = new Vue({
             form_storable_key: 'class_utility_id',
             list_type: 'table',
             list_table_columns: {
-                id: 'ID',
                 class_id: 'Class',
+                specialization_id: 'Specialization',
                 utility_id: 'Utility',
-                cooldown: 'Cooldown'
+                cooldown: 'Cooldown',
+                name: 'Name'
             },
             fields: [
                 'class_id',
+                'specialization_id',
                 'utility_id',
-                'cooldown'
+                'cooldown',
+                'name'
             ],
             views: [
                 'form'
             ]
+        },
+        classes: [],
+        utility_types: [],
+        specializations: []
+    },
+    methods: {
+        // API Stuff
+        getUtilityTypes() {
+            DynamicSuite.call('baddies-insight', 'utility_types:read', null, response => {
+                this.utility_types = response.data
+            });
+        },
+        getClasses() {
+            DynamicSuite.call('baddies-insight', 'general:classes.read', null, response => {
+                this.classes = response.data
+            });
+        },
+        getSpecializations(class_id) {
+            let data = {
+                class_id: class_id
+            };
+
+            DynamicSuite.call('baddies-insight', 'general:specialization.read', data, response => {
+                console.log(response)
+                this.specializations = response.data
+            });
         }
     },
-    methods: {},
     computed: {},
-    watch: {},
-    created() {
-
-    },
     mounted() {
-
+        this.getUtilityTypes();
+        this.getClasses();
+        this.getSpecializations(1);
     }
 });
