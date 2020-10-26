@@ -1,0 +1,19 @@
+<div id="mia">
+    <div class="content-container">
+        <div class="info-bar">
+            <aui-datalist
+                    id="mia-character"
+                    label="Character"
+                    :options="characters"
+            ></aui-datalist>
+            <aui-select
+                    label="Duration"
+                    :options="duration_options"
+            ></aui-select>
+        </div>
+        <mia-calendar></mia-calendar>
+        <div class="control-bar">
+            <aui-button>Confirm MIA</aui-button>
+        </div>
+    </div>
+</div>

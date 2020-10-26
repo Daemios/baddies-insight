@@ -1,0 +1,41 @@
+<div id="class-utility">
+
+    <!-- Create a new CRUD component -->
+    <aui-crud v-bind="options">
+
+        <!-- List title -->
+        <template #list-title>Class Utilities</template>
+
+        <!-- List buttons -->
+        <template #list-buttons>
+        </template>
+
+        <!-- Form page -->
+        <template #form="{ form, error, overlay }">
+
+            <aui-input
+                    label="class_id"
+                    :failure="error.class_id"
+                    :disabled="overlay"
+                    v-model="form.class_id"
+            ></aui-input>
+
+            <aui-input
+                    label="utility_id"
+                    :failure="error.utility_id"
+                    :disabled="overlay"
+                    v-model="form.utility_id"
+            ></aui-input>
+
+            <aui-input
+                    label="cooldown"
+                    :failure="error.cooldown"
+                    :disabled="overlay"
+                    v-model="form.cooldown"
+            ></aui-input>
+
+        </template>
+
+    </aui-crud>
+
+</div>

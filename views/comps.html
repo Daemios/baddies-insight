@@ -1,0 +1,101 @@
+<div id="comp-builder" v-cloak>
+    <div class="top-control">
+        <raid-date-picker
+            @date="dateChange"
+        ></raid-date-picker>
+        <span class="bosses">
+
+            <div>
+                <aui-button
+                    :disabled="!getBossNameRelative(-1) || week === null"
+                    @click="selectBossAtRelativeIndex(-1)"
+                >
+                    <i class="fas fa-chevron-left"></i>
+                </aui-button>
+            </div>
+
+            <aui-select
+                v-model="boss.selected"
+                :disabled="week === null"
+                :options="boss.options"
+                v-if="getBossNameRelative(0)"
+            >
+                {{getBossNameRelative(0)}}
+            </aui-select>
+
+            <div>
+                <aui-button
+                    :disabled="!getBossNameRelative(1) || week === null"
+                    @click="selectBossAtRelativeIndex(1)"
+                >
+                    <i class="fas fa-chevron-right">
+                    </i>
+                </aui-button>
+            </div>
+
+        </span>
+        <aui-select
+            label="Instance"
+            v-model="instance"
+            :options="instances"
+            @change="getBosses()"
+        ></aui-select>
+    </div>
+    <div class="boss-stats">
+        <div class="utility-breakdown">
+            <div class="title">Current (Required):</div>
+            <div class="utility" ></div>
+        </div>
+        <div class="total">
+            <div>Total</div>
+            <div><strong>{{characters_added.length || 0}}</strong></div>
+        </div>
+        <div class="copy-last">
+            <aui-button @click="$emit('copy-last')">Copy Previous Boss</aui-button>
+        </div>
+    </div>
+    <div class="builder" v-if="week !== null && week !== ''">
+        <picker
+                role="tank"
+                :characters_added="addedCharacters('tank')"
+                :characters_unadded="unAddedCharacters('tank')"
+                @add="addModal"
+                @replace="replaceModal"
+                @remove="removeCharacter"
+        ></picker>
+        <picker
+                role="melee"
+                :characters_added="addedCharacters('melee')"
+                :characters_unadded="unAddedCharacters('melee')"
+                @add="addModal"
+                @replace="replaceModal"
+                @remove="removeCharacter"
+        ></picker>
+        <picker
+                role="ranged"
+                :characters_added="addedCharacters('ranged')"
+                :characters_unadded="unAddedCharacters('ranged')"
+                @add="addModal"
+                @replace="replaceModal"
+                @remove="removeCharacter"
+        ></picker>
+        <picker
+                role="healer"
+                :characters_added="addedCharacters('healer')"
+                :characters_unadded="unAddedCharacters('healer')"
+                @add="addModal"
+                @replace="replaceModal"
+                @remove="removeCharacter"
+        ></picker>
+    </div>
+    <div class="no-week" v-else>
+        Please pick a week
+    </div>
+    <add-modal
+        :title="modal.title"
+        :show="modal.state"
+        :characters_unadded="unAddedCharacters(modal.role)"
+        @close="modal.state = false"
+        @roster-change="rosterChange"
+    ></add-modal>
+</div>

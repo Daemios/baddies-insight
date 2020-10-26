@@ -1,0 +1,46 @@
+/* Import the core DS colors */
+@import "../../../../../client/css/colors"
+
+#mia
+  min-height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+
+  .content-container
+
+    .info-bar
+      display: grid
+      grid-gap: 1rem
+      grid-template-columns: 1fr 1fr
+      margin-bottom: 2rem
+
+    .mia-calendar
+      display: grid
+      grid-gap: 1rem
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+
+      .date
+        border: 1px solid black
+
+        &:hover
+          cursor: pointer
+          background: white
+
+        .date-header
+          text-align: center
+          padding: .5rem
+          background: $primary
+          color: white
+          font-weight: bold
+
+        .date-content
+          min-height: 4rem
+
+    .control-bar
+      margin-top: 2rem
+      display: flex
+
+      .aui.btn
+        margin-left: auto
+

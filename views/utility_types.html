@@ -1,0 +1,27 @@
+<div id="utility-types">
+
+    <!-- Create a new CRUD component -->
+    <aui-crud v-bind="options">
+
+        <!-- List title -->
+        <template #list-title>Utility Types</template>
+
+        <!-- List buttons -->
+        <template #list-buttons>
+        </template>
+
+        <!-- Form page -->
+        <template #form="{ form, error, overlay }">
+
+            <aui-input
+                    label="Label"
+                    :failure="error.label"
+                    :disabled="overlay"
+                    v-model="form.label"
+            ></aui-input>
+
+        </template>
+
+    </aui-crud>
+
+</div>

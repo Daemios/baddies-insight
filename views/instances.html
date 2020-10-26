@@ -1,0 +1,42 @@
+<div id="instances">
+
+    <!-- Create a new CRUD component -->
+    <aui-crud v-bind="options">
+
+        <!-- List title -->
+        <template #list-title>Instances</template>
+
+        <!-- List buttons -->
+        <template #list-buttons>
+        </template>
+
+        <!-- Form page -->
+        <template #form="{ form, error, overlay }">
+
+            <aui-select
+                    label="Type"
+                    :failure="error.type"
+                    :disabled="overlay"
+                    :options="type_options"
+                    v-model="form.type"
+            ></aui-select>
+
+            <aui-input
+                    label="Label"
+                    :failure="error.label"
+                    :disabled="overlay"
+                    v-model="form.label"
+            ></aui-input>
+
+            <aui-input
+                    label="Tier"
+                    :failure="error.tier"
+                    :disabled="overlay"
+                    v-model="form.tier"
+            ></aui-input>
+
+        </template>
+
+    </aui-crud>
+
+</div>

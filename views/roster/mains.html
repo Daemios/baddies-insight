@@ -1,0 +1,48 @@
+<div id="mains">
+
+    <!-- Create a new CRUD component -->
+    <aui-crud v-bind="options">
+
+        <!-- List title -->
+        <template #list-title>Mains</template>
+
+        <!-- List buttons -->
+        <template #list-buttons>
+        </template>
+
+        <!-- Form page -->
+        <template #form="{ form, error, overlay }">
+
+            <div class="col-1">
+                <aui-input
+                        label="Name"
+                        :failure="error.class"
+                        :disabled="overlay"
+                        v-model="form.class"
+                ></aui-input>
+            </div>
+
+            <div class="col-2">
+                <aui-select
+                        label="class_id"
+                        :failure="error.class_id"
+                        :disabled="overlay"
+                        :options="class_options"
+                        @change="getSpecializations(form.class_id)"
+                        v-model="form.class_id"
+                ></aui-select>
+
+                <aui-select
+                        label="specialization_id"
+                        :failure="error.specialization_id"
+                        :disabled="overlay"
+                        :options="specialization_options"
+                        v-model="form.specialization_id"
+                ></aui-select>
+            </div>
+
+        </template>
+
+    </aui-crud>
+
+</div>

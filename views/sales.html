@@ -1,0 +1,44 @@
+
+<div id="sales">
+
+    <!-- Create a new CRUD component -->
+    <aui-crud v-bind="options">
+
+        <!-- List title -->
+        <template #list-title>Pricing Entries</template>
+
+        <!-- List buttons -->
+        <template #list-buttons>
+        </template>
+
+        <!-- Form page -->
+        <template #form="{ form, error, overlay }">
+
+            <aui-input
+                    label="Label"
+                    :failure="error.label"
+                    :disabled="overlay"
+                    v-model="form.label"
+            ></aui-input>
+
+            <aui-input
+                    label="Price"
+                    type="number"
+                    :failure="error.price"
+                    :disabled="overlay"
+                    v-model="form.price"
+            ></aui-input>
+
+            <aui-select
+                    label="Type"
+                    :failure="error.type"
+                    :disabled="overlay"
+                    :options="type_options"
+                    v-model="form.type"
+            ></aui-select>
+
+        </template>
+
+    </aui-crud>
+
+</div>

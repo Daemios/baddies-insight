@@ -1,0 +1,283 @@
+{
+  "name": "baddies-insight",
+  "author": "Michael Ryan",
+  "version": "1.0.0",
+  "description": "Baddies.org homepage",
+  "license": "Proprietary",
+  "global": {
+    "autoload": ["lib/"]
+  },
+  "nav_groups": {
+    "sales": {
+      "name": "Develop",
+      "icon": "fas fa-code",
+      "public": true
+    },
+    "data": {
+      "name": "Data",
+      "icon": "fas fa-cube",
+      "public": true
+    },
+    "roster": {
+      "name": "Roster",
+      "icon": "fas fa-users",
+      "public": true
+    }
+  },
+  "views": {
+    "/manage/sales": {
+      "entry": "views/sales.html",
+      "title": "Sales",
+      "nav_name": "Sales",
+      "js": ["js/sales.js"],
+      "css": ["css/sales.min.css"]
+    },
+    "/manage/roster/mains": {
+      "entry": "views/roster/mains.html",
+      "title": "Mains",
+      "nav_name": "Mains",
+      "nav_group": "roster",
+      "js": ["js/roster/mains.js"],
+      "css": ["css/roster/mains.min.css"]
+    },
+    "/manage/roster/alts": {
+      "entry": "views/roster/alts.html",
+      "title": "Mains",
+      "nav_name": "Alts",
+      "nav_group": "roster",
+      "js": ["js/roster/alts.js"],
+      "css": ["css/roster/alts.min.css"]
+    },
+    "/manage/comps": {
+      "entry": "views/comps.html",
+      "title": "Comp Builder",
+      "nav_name": "Comps",
+      "js": ["js/comps.js"],
+      "css": ["css/comps.min.css"]
+    },
+    "/manage/boss-builder": {
+      "entry": "views/boss_builder.html",
+      "title": "Boss Builder",
+      "nav_name": "Boss Builder",
+      "js": ["js/boss_builder.js"],
+      "css": ["css/boss_builder.min.css"]
+    },
+    "/mia": {
+      "entry": "views/mia/mia.html",
+      "title": "MIA",
+      "nav_name": "MIA",
+      "public": true,
+      "hide_nav": true,
+      "js": ["js/mia/mia.js"],
+      "css": ["css/mia/mia.min.css"]
+    },
+    "/manage/data/instances": {
+      "entry": "views/instances.html",
+      "title": "Instances",
+      "nav_name": "Instances",
+      "nav_group": "data",
+      "js": ["js/instances.js"],
+      "css": ["css/instances.min.css"]
+    },
+    "/manage/data/bosses": {
+      "entry": "views/bosses.html",
+      "title": "Bosses",
+      "nav_name": "Bosses",
+      "nav_group": "data",
+      "js": ["js/bosses.js"],
+      "css": ["css/bosses.min.css"]
+    },
+    "/manage/data/utility-types": {
+      "entry": "views/utility_types.html",
+      "title": "Utility Types",
+      "nav_name": "Utility Types",
+      "nav_group": "data",
+      "js": ["js/utility_types.js"],
+      "css": ["css/utility_types.min.css"]
+    },
+    "/manage/data/class-utility": {
+      "entry": "views/class_utility.html",
+      "title": "Class Utility",
+      "nav_name": "Class Utility",
+      "nav_group": "data",
+      "js": ["js/class_utility.js"],
+      "css": ["css/class_utility.min.css"]
+    }
+  },
+  "apis": {
+    "general:classes.read": {
+      "entry": "apis/general/classes.read.php",
+      "public": true
+    },
+    "general:specialization.read": {
+      "entry": "apis/general/specialization.read.php",
+      "public": true
+    },
+    "general:specializations.read": {
+      "entry": "apis/general/specializations.read.php",
+      "public": true
+    },
+
+    "sale_price:list.read": {
+      "entry": "apis/sales/sale_price.list.read.php",
+      "public": true
+    },
+    "sale_price:form.read": {
+      "entry": "apis/sales/sale_price.form.read.php",
+      "public": true
+    },
+    "sale_price:form.create": {
+      "entry": "apis/sales/sale_price.form.create.php",
+      "public": true
+    },
+    "sale_price:form.update": {
+      "entry": "apis/sales/sale_price.form.update.php",
+      "public": true
+    },
+    "sale_price:form.delete": {
+      "entry": "apis/sales/sale_price.form.delete.php",
+      "public": true
+    },
+    "sale_price:type.read": {
+      "entry": "apis/sales/sale_price.type.read.php",
+      "public": true
+    },
+
+    "instance_types:read": {
+      "entry": "apis/instances/instance_types.read.php",
+      "public": true
+    },
+    "instances:list.read": {
+      "entry": "apis/instances/instances.list.read.php",
+      "public": true
+    },
+    "instances:form.read": {
+      "entry": "apis/instances/instances.form.read.php",
+      "public": true
+    },
+    "instances:form.create": {
+      "entry": "apis/instances/instances.form.create.php",
+      "public": true
+    },
+    "instances:form.update": {
+      "entry": "apis/instances/instances.form.update.php",
+      "public": true
+    },
+    "instances:form.delete": {
+      "entry": "apis/instances/instances.form.delete.php",
+      "public": true
+    },
+    "instances:read": {
+      "entry": "apis/instances/instances.read.php",
+      "public": true
+    },
+
+    "bosses:list.read": {
+      "entry": "apis/bosses/bosses.list.read.php",
+      "public": true
+    },
+    "bosses:form.read": {
+      "entry": "apis/bosses/bosses.form.read.php",
+      "public": true
+    },
+    "bosses:form.create": {
+      "entry": "apis/bosses/bosses.form.create.php",
+      "public": true
+    },
+    "bosses:form.update": {
+      "entry": "apis/bosses/bosses.form.update.php",
+      "public": true
+    },
+    "bosses:form.delete": {
+      "entry": "apis/bosses/bosses.form.delete.php",
+      "public": true
+    },
+    "bosses:read": {
+      "entry": "apis/bosses/bosses.read.php",
+      "public": true
+    },
+
+    "utility_types:list.read": {
+      "entry": "apis/utility_types/list.read.php",
+      "public": true
+    },
+    "utility_types:form.read": {
+      "entry": "apis/utility_types/form.read.php",
+      "public": true
+    },
+    "utility_types:form.create": {
+      "entry": "apis/utility_types/form.create.php",
+      "public": true
+    },
+    "utility_types:form.update": {
+      "entry": "apis/utility_types/form.update.php",
+      "public": true
+    },
+    "utility_types:form.delete": {
+      "entry": "apis/utility_types/form.delete.php",
+      "public": true
+    },
+    "utility_types:read": {
+      "entry": "apis/utility_types/read.php",
+      "public": true
+    },
+
+    "class_utility:list.read": {
+      "entry": "apis/class_utility/class_utility.list.read.php",
+      "public": true
+    },
+    "class_utility:form.read": {
+      "entry": "apis/class_utility/class_utility.form.read.php",
+      "public": true
+    },
+    "class_utility:form.create": {
+      "entry": "apis/class_utility/class_utility.form.create.php",
+      "public": true
+    },
+    "class_utility:form.update": {
+      "entry": "apis/class_utility/class_utility.form.update.php",
+      "public": true
+    },
+    "class_utility:form.delete": {
+      "entry": "apis/class_utility/class_utility.form.delete.php",
+      "public": true
+    },
+
+    "roster:mains.list.read": {
+      "entry": "apis/roster/mains.list.read.php",
+      "public": true
+    },
+    "roster:mains.form.read": {
+      "entry": "apis/roster/mains.form.read.php",
+      "public": true
+    },
+    "roster:mains.form.create": {
+      "entry": "apis/roster/mains.form.create.php",
+      "public": true
+    },
+    "roster:mains.form.update": {
+      "entry": "apis/roster/mains.form.update.php",
+      "public": true
+    },
+    "roster:mains.form.delete": {
+      "entry": "apis/roster/mains.form.delete.php",
+      "public": true
+    },
+    "roster:mains.read": {
+      "entry": "apis/roster/mains.read.php",
+      "public": true
+    },
+    "roster:change": {
+      "entry": "apis/roster/change.php",
+      "public": true
+    },
+    "roster:read": {
+      "entry": "apis/roster/read.php",
+      "public": true
+    },
+    "roster:remove": {
+      "entry": "apis/roster/remove.php",
+      "public": true
+    }
+  }
+}
