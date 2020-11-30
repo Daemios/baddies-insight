@@ -62,7 +62,8 @@ class Member extends Storable implements IStorable
                 'name' => $this->name,
                 'class_id' => $this->class_id,
                 'specialization_id' => $this->specialization_id,
-                'main' => $this->main
+                'main' => $this->main,
+                'created_on' => time()
             ])
             ->into('wow_members')
             ->execute();

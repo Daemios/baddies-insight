@@ -1,27 +1,59 @@
 <div id="mia">
-    <div class="content-container">
-        <div class="info-bar">
-            <aui-datalist
-                    id="mia-character"
-                    label="Character"
-                    :options="characters"
-                    v-model="character_selected"
-            ></aui-datalist>
-            <aui-select
-                    label="Duration"
-                    :options="duration_options"
-                    v-model="duration_selected"
-            ></aui-select>
-        </div>
+    <div class="ds-container">
+        <h1>Select day</h1>
         <mia-calendar
                 :duration_selected="duration_selected"
                 :date_selected="date_selected"
-                @click="setDate"
+                :dates="dates"
+                @click="openModal"
         ></mia-calendar>
-        <div class="control-bar">
-            <aui-button
-                :disabled="disableSubmit"
-            >Confirm MIA</aui-button>
-        </div>
+        <aui-modal
+            :show="modal"
+            @close="clear()"
+        >
+            <div v-if="!posted">
+                <h1>{{date_selected}}</h1>
+                <h2>Currently MIA:</h2>
+                <div class="date-mias">
+                    <div class="date-mia" v-for="mia in miaForDate">
+                        <span :class="mia.wow_class">{{mia.name}}</span>: {{mia.duration}}
+                    </div>
+                </div>
+                <div class="col-2">
+                    <aui-datalist
+                        id="mia-character"
+                        label="Character"
+                        :options="characters"
+                        v-model="character_selected"
+                    ></aui-datalist>
+                    <aui-select
+                        label="Duration"
+                        :options="duration_options"
+                        v-model="duration_selected"
+                    ></aui-select>
+                </div>
+                <aui-textarea
+                    label="Note"
+                    v-model="note"
+                ></aui-textarea>
+            </div>
+            <div class="posted-message" v-if="posted">
+                Your post out has been logged. <br><br>
+                A notice has been posted to the MIA channel.
+                <br><br>
+                Please confirm.
+            </div>
+            <div class="control-bar">
+                <aui-button
+                    :disabled="disableSubmit"
+                    v-if="!posted"
+                    @click="saveMia()"
+                >Confirm MIA</aui-button>
+                <aui-button
+                    v-if="posted"
+                    @click="clear()"
+                >Submit Another</aui-button>
+            </div>
+        </aui-modal>
     </div>
 </div>

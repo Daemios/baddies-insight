@@ -7,52 +7,63 @@
   justify-content: center
   align-items: center
 
-  .content-container
+  .mia-calendar
+    display: grid
+    grid-gap: 1rem
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+
+    .aui.input
+      grid-column: 6/8
+
+    .date
+      border: 1px solid black
+      min-height: 7rem
+
+      &.selected
+        .date-header
+          background: $success
+
+      &:hover
+        cursor: pointer
+        background: white
+
+      .date-header
+        text-align: center
+        padding: .5rem
+        background: $primary
+        color: white
+        font-weight: bold
+
+      .mias
+        margin: .5rem
+        font-size: 1.25rem
+        font-weight: bold
+
+        span
+          font-size: .75rem
+          font-weight: initial
+
+
+
+  .ds-container
+
+    .aui:not(button)
+      margin-bottom: 1rem
 
     .info-bar
       display: grid
       grid-gap: 1rem
       grid-template-columns: 1fr 1fr
-      margin-bottom: 2rem
-
-    .mia-calendar
-      display: grid
-      grid-gap: 1rem
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
-
-      .date
-        border: 1px solid black
-
-        &.selected
-          .date-header
-            background: $success
-
-        &:hover
-          cursor: pointer
-          background: white
-
-        .date-header
-          text-align: center
-          padding: .5rem
-          background: $primary
-          color: white
-          font-weight: bold
-
-        .date-content
-          min-height: 4rem
-          display: flex
-          justify-content: center
-          align-items: center
-          font-weight: bold
-          max-width: 94px
-
-          .selected
-            text-align: center
+      margin-bottom: 1rem
 
     .control-bar
-      margin-top: 2rem
+      margin-top: 1rem
       display: flex
 
       .aui.btn
         margin-left: auto
+
+    .posted-message
+      text-align: center
+      height: 100%
 

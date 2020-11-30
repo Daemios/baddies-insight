@@ -1,12 +1,11 @@
 Vue.component('mia-calendar', {
     template: `
     <div class="mia-calendar">
-        <div class="date" :class="date_selected === date ? 'selected' : ''" v-for="date in dates" @click="$emit('click', date)">
+        <aui-input type="date" label="" :disabled="true" v-if="false"></aui-input>
+        <div class="date" :class="date_selected === date ? 'selected' : ''" v-for="data, date in dates" @click="$emit('click', date)">
             <div class="date-header">{{date}}</div>
-            <div class="date-content">
-                <div class="selected" v-if="date_selected === date">
-                    {{duration_selected}}
-                </div>
+            <div class="mias" v-if="data.mias.length > 0">
+                {{data.mias.length}} <span>MIA</span>
             </div>
         </div>
     </div>`,
@@ -17,31 +16,18 @@ Vue.component('mia-calendar', {
         },
         duration_selected: {
             type: String|null
-        }
+        },
+        dates: {
+            type: Array|null,
+            required: true
+        },
+        character: null
     },
     data() {
-        return {
-            dates: []
-        }
+        return {}
     },
-    methods: {
-
-        generateDates() {
-
-            for (let i = 0; i < 30; i++) {
-                let raw = new Date().setDate(new Date().getDate()+i)
-
-                raw = new Date(raw);
-
-                this.$set(this.dates, i, `${raw.getMonth()+1}/${raw.getDate()}/${raw.getFullYear()}`)
-            }
-
-        }
-
-    },
+    methods: {},
     mounted() {
-
-        this.generateDates();
 
     }
 
@@ -50,20 +36,33 @@ Vue.component('mia-calendar', {
 let instance = new Vue({
     el: '#mia',
     data: {
+        posted: false,
         raw_characters: [],
         characters: [],
         duration_options: {
             'Late': 'Late',
             'Entire': 'Entire'
         },
-        character_selected: null,
         duration_selected: 'Select Duration',
-        date_selected: null
+        character_selected: null,
+        dates: null,
+        date_selected: null,
+        note: null,
+        modal: false
     },
     methods: {
-        setDate(payload) {
+        openModal(payload) {
             this.date_selected = payload;
+            this.modal = true;
         },
+        clear() {
+            this.modal = false;
+            this.date_selected = null;
+            this.posted = false;
+        },
+
+
+        // API Stuff
         getMains() {
             DynamicSuite.call('baddies-insight', 'roster:mains.read', null, response => {
                 this.raw_characters = response.data;
@@ -72,15 +71,53 @@ let instance = new Vue({
                     this.$set(this.characters, character.character_id, character.name);
                 })
             });
+        },
+        saveMia() {
+            const data = {
+                character: this.character_selected,
+                date:      this.date_selected,
+                duration:  this.duration_selected,
+                note:      this.note
+            };
+
+            DynamicSuite.call('baddies-insight', 'mia:create', data, response => {
+                switch (response.status) {
+                    case 'OK':
+                        this.posted = true;
+                        this.getCalendarData();
+                        break;
+                }
+            });
+        },
+        getCalendarData() {
+            const data = {
+                unix: new Date().getTime() / 1000
+            }
+
+            DynamicSuite.call('baddies-insight', 'mia:read', data, response => {
+                console.log(response)
+                this.dates = response.data;
+            })
         }
     },
     computed: {
         disableSubmit() {
             return !(
                 this.character_selected !== null &&
-                this.date_selected !== null &&
-                this.duration_selected !== 'Select Duration'
+                this.duration_selected !== 'Select Duration' &&
+                this.note !== null
             )
+        },
+        miaForDate() {
+            let mias = [];
+
+            if (this.date_selected && this.dates[this.date_selected].mias) {
+                this.dates[this.date_selected].mias.forEach(mia => {
+                    mias.push(mia)
+                })
+            }
+
+            return mias;
         }
     },
     watch: {},
@@ -89,5 +126,6 @@ let instance = new Vue({
     },
     mounted() {
         this.getMains();
+        this.getCalendarData();
     }
 });

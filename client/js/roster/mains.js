@@ -30,7 +30,8 @@ let main_roster = new Vue({
                 }
             },
             fields: [
-                'wow_class',
+                'character_id',
+                'name',
                 'class_id',
                 'specialization_id'
             ],

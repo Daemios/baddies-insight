@@ -64,13 +64,11 @@ try {
      * Update the storable.
      */
     $member = new Member([
-        'sale_price_id' => $_POST['character_id'],
+        'character_id' => $_POST['character_id'],
         'name' => $_POST['name'],
         'class_id' => $_POST['class_id'],
         'specialization_id' => $_POST['specialization_id']
     ]);
-
-    error_log(json_encode($_POST));
 
     try {
         $member->update();

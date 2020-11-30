@@ -5,7 +5,8 @@
   "description": "Baddies.org homepage",
   "license": "Proprietary",
   "global": {
-    "autoload": ["lib/"]
+    "autoload": ["lib/"],
+    "css": []
   },
   "nav_groups": {
     "sales": {
@@ -115,6 +116,15 @@
     },
     "general:specializations.read": {
       "entry": "apis/general/specializations.read.php",
+      "public": true
+    },
+
+    "mia:create": {
+      "entry": "apis/mia/create.php",
+      "public": true
+    },
+    "mia:read": {
+      "entry": "apis/mia/read.php",
       "public": true
     },
 
@@ -267,6 +277,7 @@
       "entry": "apis/roster/mains.read.php",
       "public": true
     },
+
     "roster:change": {
       "entry": "apis/roster/change.php",
       "public": true

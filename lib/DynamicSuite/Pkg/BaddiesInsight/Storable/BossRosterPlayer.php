@@ -62,13 +62,13 @@ class BossRosterPlayer extends Storable implements IStorable
     {
         if ($id === null) return false;
 
-        $sale_price = (new Query())
+        $boss_player = (new Query())
             ->select()
             ->from('wow_bosses_roster')
             ->where('boss_character_id', '=', $id)
             ->execute(true);
 
-        return $sale_price ? new BossRosterPlayer($sale_price) : false;
+        return $boss_player ? new BossRosterPlayer($boss_player) : false;
     }
 
     /**
