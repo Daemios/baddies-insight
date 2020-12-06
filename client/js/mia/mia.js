@@ -60,6 +60,9 @@ let instance = new Vue({
             this.date_selected = null;
             this.posted = false;
         },
+        classColorClass(wow_class) {
+            return 'background-' + wow_class.replace(' ', '-').toLowerCase();
+        },
 
 
         // API Stuff
@@ -85,6 +88,7 @@ let instance = new Vue({
                     case 'OK':
                         this.posted = true;
                         this.getCalendarData();
+                        console.log(response)
                         break;
                 }
             });
@@ -95,7 +99,6 @@ let instance = new Vue({
             }
 
             DynamicSuite.call('baddies-insight', 'mia:read', data, response => {
-                console.log(response)
                 this.dates = response.data;
             })
         }

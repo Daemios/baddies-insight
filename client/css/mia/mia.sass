@@ -45,15 +45,31 @@
 
 
 
-  .ds-container
+  .modal-container
+
+    .date-mias
+      margin-bottom: 1rem
+      display: grid
+      grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) )
+      grid-gap: 1rem
+      justify-items: center
+
+      .date-mia
+        display: flex
+        align-items: center
+        border: 1px solid grey
+
+        span
+          padding: .5rem 1rem
+
+        .name
+          margin: -1px 0 -1px -1px
+
+        .duration
+          flex: 1
+          text-align: center
 
     .aui:not(button)
-      margin-bottom: 1rem
-
-    .info-bar
-      display: grid
-      grid-gap: 1rem
-      grid-template-columns: 1fr 1fr
       margin-bottom: 1rem
 
     .control-bar

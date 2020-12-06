@@ -18,7 +18,7 @@ try {
     $mias = (new Query())
         ->select()
         ->from('wow_bosses_roster_mia')
-        ->where('date', '>=', strtotime('+'. 0 .' days'))
+        ->where('date', '>=', strtotime('-1 days'))
         ->join('wow_members', 'LEFT')
         ->on('wow_members.character_id', '=', 'wow_bosses_roster_mia.character_id')
         ->join('wow_classes_specs', 'LEFT')

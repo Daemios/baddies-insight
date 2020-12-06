@@ -1,22 +1,17 @@
 
 <div id="sales">
 
-    <!-- Create a new CRUD component -->
-    <aui-crud v-bind="options">
+    <aui-crud v-bind="options" :form.sync="form" :feedback.sync="feedback" :calling.sync="calling">
 
         <!-- List title -->
         <template #list-title>Pricing Entries</template>
 
-        <!-- List buttons -->
-        <template #list-buttons>
-        </template>
-
         <!-- Form page -->
-        <template #form="{ form, error, overlay }">
+        <template #form="{ overlay }">
 
             <aui-input
                     label="Label"
-                    :failure="error.label"
+                    :failure="feedback.label"
                     :disabled="overlay"
                     v-model="form.label"
             ></aui-input>
@@ -24,14 +19,14 @@
             <aui-input
                     label="Price"
                     type="number"
-                    :failure="error.price"
+                    :failure="feedback.price"
                     :disabled="overlay"
                     v-model="form.price"
             ></aui-input>
 
             <aui-select
                     label="Type"
-                    :failure="error.type"
+                    :failure="feedback.type"
                     :disabled="overlay"
                     :options="type_options"
                     v-model="form.type"

@@ -9,22 +9,21 @@ let instance = new Vue({
             form_api_update: 'sale_price:form.update',
             form_api_delete: 'sale_price:form.delete',
             form_storable_key: 'sale_price_id',
-            list_type: 'table',
-            list_table_columns: {
-                type: 'Type',
-                title: 'Label',
-                subtext: 'Price'
-            },
-            fields: [
-                'sale_price_id',
-                'label',
-                'price'
-            ],
-            views: [
-                'form'
-            ],
-            type_options: null,
-        }
+            views: ['form'],
+
+        },
+        form: {
+            label: null,
+            price: null,
+            type: null,
+        },
+        feedback: {
+            label: null,
+            price: null,
+            type: null,
+        },
+        calling: false,
+        type_options: null
     },
     methods: {
         getTypes() {

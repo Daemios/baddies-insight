@@ -16,7 +16,8 @@
                 <h2>Currently MIA:</h2>
                 <div class="date-mias">
                     <div class="date-mia" v-for="mia in miaForDate">
-                        <span :class="mia.wow_class">{{mia.name}}</span>: {{mia.duration}}
+                        <span class="name" :class="classColorClass(mia.wow_class)">{{mia.name}}</span>
+                        <span class="duration">{{mia.duration}}</span>
                     </div>
                 </div>
                 <div class="col-2">
