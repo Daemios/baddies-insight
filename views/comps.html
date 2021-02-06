@@ -19,9 +19,7 @@
                 :disabled="week === null"
                 :options="boss.options"
                 v-if="getBossNameRelative(0)"
-            >
-                {{getBossNameRelative(0)}}
-            </aui-select>
+            ></aui-select>
 
             <div>
                 <aui-button
@@ -38,13 +36,13 @@
             label="Instance"
             v-model="instance"
             :options="instances"
-            @change="getBosses()"
+            @input="getBosses()"
         ></aui-select>
     </div>
     <div class="boss-stats">
         <div class="utility-breakdown">
             <div class="title">Current (Required):</div>
-            <div class="utility" ></div>
+            <div class="utility"></div>
         </div>
         <div class="total">
             <div>Total</div>

@@ -48,6 +48,7 @@ class Mia extends Storable implements IStorable
     public function create(): Mia
     {
 
+
         $this->mia_id = (new Query())
             ->insert([
                 'character_id' => $this->character_id,

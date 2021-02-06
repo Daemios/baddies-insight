@@ -9,7 +9,9 @@ let instance = new Vue({
             form_api_update: 'sale_price:form.update',
             form_api_delete: 'sale_price:form.delete',
             form_storable_key: 'sale_price_id',
-            views: ['form'],
+            views: {
+                form: 'Form'
+            },
 
         },
         form: {

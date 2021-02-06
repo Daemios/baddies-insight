@@ -156,7 +156,6 @@ Vue.component('raid-date-picker', {
         </aui-modal>
     </div>
     `,
-    props: {},
     data() {
         return {
             show_picker: false,
@@ -193,7 +192,6 @@ Vue.component('raid-date-picker', {
 
                 dates.push(newRange);
 
-
             }
 
             return dates;
@@ -204,6 +202,9 @@ Vue.component('raid-date-picker', {
             this.value = date.start;
             this.show_picker = false;
         }
+    },
+    mounted() {
+        this.chooseDate(this.generateMonthOfWeekRanges()[0]);
     }
 });
 
@@ -296,9 +297,11 @@ let instance = new Vue({
             DynamicSuite.call('baddies-insight', 'instances:read', null, response => {
                 if (response.status === 'OK') {
                     this.instances = response.data;
-                    this.instance = Object.keys(response.data)[0]
-                    this.getBosses();
-                    this.getRoster();
+                    this.$nextTick(() => {
+                        this.instance = Object.keys(response.data)[1];
+                        this.getBosses();
+                        this.getRoster();
+                    })
                 } else {
                     console.log(response)
                 }
@@ -391,7 +394,8 @@ let instance = new Vue({
                 }
             },
             deep: true
-        }
+        },
+
     },
     mounted() {
         this.getInstances();

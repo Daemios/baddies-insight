@@ -17,7 +17,7 @@ try {
     $boss_roster_player = new BossRosterPlayer([
         'boss_id'   => $_POST['boss'],
         'character_id' => $player['character_id'],
-        'week'      => $_POST['week']
+        'week'      => (new DateTime($_POST['week']))->format('U')
     ]);
 
     // Handle the deletion of any player we're replacing with the same general method

@@ -11,6 +11,7 @@ try {
             'label'
         ])
         ->from('wow_instances')
+        ->orderBy('instance_id', 'ASC')
         ->execute(false, PDO::FETCH_KEY_PAIR);
 
     return new Response('OK', 'Retrieved wow instances', $data);
